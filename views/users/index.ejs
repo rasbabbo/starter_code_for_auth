@@ -1,12 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 <head>
   <title></title>
 </head>
 <body>
-  <%  user.forEach(function(user) { %>
-    <%= user.dataValues.username %>
-    <% }) %>
-
-</body>
+  <h1>Users</h1>
+    <ul> 
+      <% user.forEach(function(user){ %>
+      <li> <a href="/users/<%= user.dataValues.id %>" ><%=user.dataValues.firstname %></a>
+      </li>
+        <% }) %>
+    </ul>
+  </body>
 </html>

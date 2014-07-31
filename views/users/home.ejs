@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <% if (!isAuthenticated) { %>
+   <a href="/login">Gotta login</a>
+
+   <% } else { %>
+
+    <h1> <%= user.username %> - welcome to site</h1>
+    <a href="/logout">logout here</a>
+                    
+
+    <h2>youre logged in</h2>
+    <a href="/">go back to the landing page</a>
+   <% } %>  
+
+</body>
+</html>
