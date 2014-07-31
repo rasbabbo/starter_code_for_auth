@@ -23,26 +23,26 @@ app.use(function(req, res, next){
 
 app.get('/', function(req, res) {
   if(!req.user) {
-    res.render('signup');
+    res.render('users/signup');
   } else {
-    res.redirect('home');
+    res.redirect('/users/home');
   }
 });
 
 
-app.get('signup', function(req, res) {
+app.get('users/signup', function(req, res) {
   if(!req.user) {
-    res.render('signup', {message: null, username: ""});
+    res.render('users/signup', {message: null, username: ""});
   } else {
-    (res.redirect('/login'));
+    (res.redirect('users/login'));
   }
 })
 
-app.get('/login', function(req, res) {
+app.get('users/login', function(req, res) {
   res.render('login', {message: null})
 });
 
-app.post('/login', function(req, res) {
+app.post('users/login', function(req, res) {
   db.user.authorize(req.body.username, req.body.password,
     function(err) {
       res.render('login', {message: err.message})
@@ -103,19 +103,19 @@ app.get('/users', function (req,res) {
 //
 });
 
-app.get('/users/:id', function (req,res) {
-  var id = req.params.id;
-  db.user.find(3)
-  .success(function(foundUser){
-    foundUser.getPosts() 
-     .success(function(foundPosts) {
-      res.render('users/show', {
-        user: foundUser,
-        posts: foundPosts
-      });
-    })
-  });
-});
+// app.get('/users/:id', function (req,res) {
+//   var id = req.params.id;
+//   db.user.find(3)
+//   .success(function(foundUser){
+//     foundUser.getPosts() 
+//      .success(function(foundPosts) {
+//       res.render('users/show', {
+//         user: foundUser,
+//         posts: foundPosts
+//       });
+//     })
+//   });
+// });
 
 
 app.get('/posts/:id', function (req,res) {
@@ -159,5 +159,5 @@ app.post('/users/:id/posts', function(req, res){
 
 
 app.listen(3000, function(){
-  console.log("LISTENING ON PORT 3000")
+  console.log("Having a SICK party ON PORT 3000")
 })
